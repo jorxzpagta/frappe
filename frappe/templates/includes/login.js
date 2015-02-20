@@ -124,14 +124,9 @@ login.login_handlers = (function() {
 })();
 
 frappe.ready(function() {
+	window.location.hash = "#login";
 	login.bind_events();
-
-	if (!window.location.hash) {
-		window.location.hash = "#login";
-	} else {
-		$(window).trigger("hashchange");
-	}
-
+	login.login();
 	$(".form-signup, .form-forgot").removeClass("hide");
 	$(document).trigger('login_rendered');
 });
